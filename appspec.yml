@@ -1,0 +1,17 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /deploy
+hooks:
+  BeforeInstall:
+    - location: scripts/install.sh
+      timeout: 300
+      runas: root
+    - location: scripts/server_start.sh
+      timeout: 60
+      runas: root
+  ApplicationStop:
+    - location: scripts/server_stop.sh
+      timeout: 60
+      runas: root
