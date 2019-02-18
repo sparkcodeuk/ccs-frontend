@@ -69,6 +69,10 @@ chmod +x install
 ./install auto || rollback
 
 # Prepare & move files into place
+echo "-----------"
+find "$DEPLOY_PATH" -type f
+echo "-----------"
+
 rm -f "$DEPLOY_PATH/appspec.yml"
 rm -rf "$DEPLOY_PATH/deploy"
 mv -f "$DEPLOY_PATH/"* "$WEB_CURRENT"

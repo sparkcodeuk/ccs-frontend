@@ -1,4 +1,5 @@
 #!/bin/bash
 # Stop application-related services
 
-systemctl stop httpd.service
+systemctl is-active --quiet httpd \
+    && systemctl stop httpd.service
