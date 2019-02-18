@@ -4,14 +4,15 @@ files:
   - source: /
     destination: /deploy
 hooks:
-  BeforeInstall:
-    - location: deploy/install.sh
-      timeout: 300
-      runas: root
-    - location: deploy/server_start.sh
-      timeout: 60
-      runas: root
   ApplicationStop:
     - location: deploy/server_stop.sh
+      timeout: 60
+      runas: root
+  AfterInstall:
+    - location: deploy/setup.sh
+      timeout: 300
+      runas: root
+  ApplicationStart:
+    - location: deploy/server_start.sh
       timeout: 60
       runas: root

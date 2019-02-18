@@ -1,7 +1,7 @@
 #!/bin/bash
 # System init/update
 
-echo "Starting codedeploy install.sh ..."
+echo "Starting codedeploy setup.sh ..."
 
 DEPLOY_PATH="/deploy"
 WEB_PREV="/var/www.prev"
@@ -87,4 +87,4 @@ if [ -e "$WEB_PREV" ]; then
     sudo rm -rf "$WEB_PREV"
 fi
 
-echo "Codedeploy install.sh complete."
+echo "Codedeploy setup.sh complete."
