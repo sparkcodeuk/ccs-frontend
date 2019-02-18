@@ -1,8 +1,8 @@
 #!/bin/bash
 # Start/enable application-related services
 
-systemctl is-enabled --quiet httpd \
-    || systemctl enable httpd.service
+sudo systemctl is-enabled --quiet httpd \
+    || sudo systemctl enable httpd
 
-systemctl is-active --quiet httpd \
-    || systemctl start httpd.service
+sudo systemctl is-active --quiet httpd \
+    || sudo systemctl start httpd
