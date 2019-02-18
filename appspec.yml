@@ -3,10 +3,6 @@ os: linux
 files:
   - source: /
     destination: /deploy
-  - source: /.env
-    destination: /deploy/.env
-  - source: /.env.test
-    destination: /deploy/.env.test
 hooks:
   ApplicationStop:
     - location: deploy/server_stop.sh
