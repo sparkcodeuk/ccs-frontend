@@ -36,43 +36,7 @@ if [ -e "$WEB_CURRENT" ]; then
     sudo chown root:root "$WEB_CURRENT"
 fi
 
-# Add required package repos
-# @TODO ADD TO BASE IMAGE
-sudo yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm || true
-sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm || true
-
-# Install required packages
-# NOTE: ruby required by codedeploy agent
-
-# ADD TO BASE IMAGE
-# @TODO ADD TO BASE IMAGE
-sudo yum -y install \
-    httpd \
-    ruby \
-    php72u \
-    php72u-mysqlnd.x86_64 \
-    php72u-opcache \
-    php72u-xml \
-    php72u-gd \
-    php72u-devel \
-    php72u-intl \
-    php72u-mbstring \
-    php72u-bcmath \
-    php72u-soap \
-    php72u-json \
-    || rollback
-
-# Install CodeDeploy agent
-# ADD TO BASE IMAGE
-sudo curl -s -o install https://aws-codedeploy-eu-west-1.s3.amazonaws.com/latest/install || rollback
-sudo chmod +x install
-sudo ./install auto || rollback
-
 # Prepare & move files into place
-echo "-----------"
-sudo find "$DEPLOY_PATH" -type f
-echo "-----------"
-
 sudo rm -f "$DEPLOY_PATH/appspec.yml"
 sudo rm -rf "$DEPLOY_PATH/deploy"
 sudo mv -f "$DEPLOY_PATH/.env" "$DEPLOY_PATH/.env.test" "$DEPLOY_PATH/"* "$WEB_CURRENT"
