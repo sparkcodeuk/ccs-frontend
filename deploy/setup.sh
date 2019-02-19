@@ -41,6 +41,7 @@ sudo rm -f "$DEPLOY_PATH/appspec.yml"
 sudo rm -rf "$DEPLOY_PATH/deploy"
 sudo mv -f "$DEPLOY_PATH/.env" "$DEPLOY_PATH/.env.test" "$DEPLOY_PATH/"* "$WEB_CURRENT"
 sudo ln -s "$WEB_CURRENT/public" "$WEB_CURRENT/html"
+sudo chown -R apache:apache /var/www
 
 # Cleanup
 if [ -e "$DEPLOY_PATH" ]; then
